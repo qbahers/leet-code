@@ -8,6 +8,11 @@
  * }
  */
 
+/**
+ * Time:  O(min(n1, n2))
+ * Space: O(min(height1, height2))
+ */
+
 public class SameTree {
 
     public boolean isSameTree(TreeNode p, TreeNode q) {
