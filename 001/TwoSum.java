@@ -1,12 +1,20 @@
+/**
+ * Time:  O(n)
+ * Space: O(n)
+ */
+
 public class TwoSum {
     
     public int[] twoSum(int[] nums, int target) {
-        int N = nums.length;
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
         
-        for (int i = 0; i < N; i++)
-            for (int j = i + 1; j < N; j++)
-                if (nums[i] + nums[j] == target)
-                    return i < j ? new int[]{i + 1, j + 1} : new int[]{j + 1, i + 1};
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(target - nums[i])) {
+                return new int[]{map.get(target - nums[i]), i};
+            }
+            
+            map.put(nums[i], i);
+        }
         
         return new int[]{-1, -1};
     }
