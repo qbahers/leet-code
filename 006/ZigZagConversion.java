@@ -1,16 +1,31 @@
+/**
+ * Time:  O(n)
+ * Space: O(n)
+ */
+
 public class ZigZagConversion {
     
     public String convert(String s, int numRows) {
         if (numRows == 1) return s;
         
-        StringBuilder ss = new StringBuilder();
+        int N = s.length();
+        int step = 2 * numRows - 2;
+        StringBuilder res = new StringBuilder();
         
-        for (int i = 0; i < numRows; i++)
-            for (int j = 0; j < s.length(); j++)
-                if (j % (2 * numRows - 2) == i || j % (2 * numRows - 2) == (2 * numRows - 2) - i)
-                    ss.append(s.charAt(j));
+        for (int i = 0; i < numRows; i++) {
+            int j = 0;
+            while (j < N) {
+                if (j + i < N) {
+                    res.append(s.charAt(j + i));
+                }
+                if (j + step - i < N && i != 0 && i != numRows - 1) {
+                    res.append(s.charAt(j + step - i));
+                }
+                j += step;
+            }
+        }
         
-        return new String(ss);
+        return res.toString();
     }
     
 }
