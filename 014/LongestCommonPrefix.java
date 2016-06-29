@@ -1,18 +1,22 @@
+/**
+ * Time:  O(n * m) where m is the length of the longest common prefix
+ * Space: O(1)
+ */
+
 public class LongestCommonPrefix {
     
     public String longestCommonPrefix(String[] strs) {
-        int N = strs.length;
+        if (strs.length == 0) return "";
         
-        if (N == 0) return "";
-        if (N == 1) return strs[0];
+        for (int i = 0; i < strs[0].length(); i++) {
+            for (int j = 1; j < strs.length; j++) {
+                if (i >= strs[j].length() || strs[j].charAt(i) != strs[0].charAt(i)) {
+                    return strs[0].substring(0, i);
+                }
+            }
+        }
         
-        Arrays.sort(strs);
-        
-        int k = 0;
-        while (k < strs[0].length() && strs[0].charAt(k) == strs[N - 1].charAt(k))
-            k++;
-        
-        return strs[0].substring(0, k);
+        return strs[0];
     }
     
 }
