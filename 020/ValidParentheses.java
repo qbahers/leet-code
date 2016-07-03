@@ -1,3 +1,8 @@
+/**
+ * Time:  O(n)
+ * Space: O(n)
+ */
+
 public class ValidParentheses {
     
     public boolean isValid(String s) {
@@ -8,19 +13,19 @@ public class ValidParentheses {
                 stack.push(c);
             }
             else {
-                if (!stack.isEmpty()) {
-                    if      (c == ')' && stack.peek() == '(') stack.pop();
-                    else if (c == '}' && stack.peek() == '{') stack.pop();
-                    else if (c == ']' && stack.peek() == '[') stack.pop();
-                    else                                      return false;
-                }
-                else {
+                if (stack.empty()) return false;
+                
+                char top = stack.pop();
+                
+                if ((c == ')' && top != '(') || 
+                    (c == '}' && top != '{') || 
+                    (c == ']' && top != '[')) {
                     return false;
                 }
             }
         }
         
-        return stack.isEmpty();
+        return stack.empty();
     }
     
 }
