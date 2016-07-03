@@ -1,29 +1,30 @@
+/**
+ * Time:  O(4^n)
+ * Space: O(4^n)
+ */
+
 public class LetterCombinationsOfAPhoneNumber {
     
     public List<String> letterCombinations(String digits) {
+        List<String> res = new ArrayList<String>();
+        if (digits.isEmpty()) return res;
+        res.add("");
         
-        List<String> combinations = new ArrayList<String>();
+        String[] mapping = {" ", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
         
-        if (digits.isEmpty()) return combinations;
-        
-        String[] mapping = new String[]{"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
-        
-        combinations.add("");
-        
-        for (int i = 0; i < digits.length(); i++) {
-            int digit = digits.charAt(i) - '0';
-            String letters = mapping[digit];
+        for (char digit : digits.toCharArray()) {
+            List<String> tmp = new ArrayList<String>();
             
-            List<String> list = new ArrayList<String>();
+            for (String combination : res) {
+                for (char letter : mapping[digit - '0'].toCharArray()) {
+                    tmp.add(combination + letter);
+                }
+            }
             
-            for (int j = 0; j < letters.length(); j++)
-                for (int k = 0; k < combinations.size(); k++)
-                    list.add(combinations.get(k) + letters.charAt(j));
-            
-            combinations = list;
+            res = tmp;
         }
         
-        return combinations;
+        return res;
     }
     
 }
