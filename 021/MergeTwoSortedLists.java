@@ -16,7 +16,7 @@ public class MergeTwoSortedLists {
     
     // Recursive solution
     
-    public ListNode mergeTwoLists2(ListNode l1, ListNode l2) {
+    public ListNode mergeTwoLists1(ListNode l1, ListNode l2) {
         if (l1 == null) return l2;
         if (l2 == null) return l1;
         
@@ -32,7 +32,7 @@ public class MergeTwoSortedLists {
     
     // Iterative solution
     
-    public ListNode mergeTwoLists1(ListNode l1, ListNode l2) {
+    public ListNode mergeTwoLists2(ListNode l1, ListNode l2) {
         ListNode dummy = new ListNode(0);
         
         ListNode cur = dummy;
