@@ -16,7 +16,7 @@ public class SwapNodesInPairs {
     
     // Recursive solution
     
-    public ListNode swapPairs(ListNode head) {
+    public ListNode swapPairs1(ListNode head) {
         if (head == null || head.next == null) return head;
         
         ListNode h = head.next.next;
@@ -30,7 +30,7 @@ public class SwapNodesInPairs {
     
     // Iterative solution
     
-    public ListNode swapPairs(ListNode head) {
+    public ListNode swapPairs2(ListNode head) {
         ListNode dummy = new ListNode(0);
         
         ListNode cur = dummy;
