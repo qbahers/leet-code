@@ -1,18 +1,21 @@
+// TODO: Use the KMP algorithm instead
+
+/**
+ * Time:  O(m * n)
+ * Space: O(1)
+ */
+
 public class ImplementStrStr {
     
     public int strStr(String haystack, String needle) {
-        int N = haystack.length();
-        int M = needle.length();
+        int M = haystack.length();
+        int N = needle.length();
         
-        for (int i = 0; i < N - M + 1; i++) {
-            int j = i;
-            int k = 0;
-            while (k < M && haystack.charAt(j) == needle.charAt(k)) {
-                j++;
-                k++;
-            }
+        for (int i = 0; i < M - N + 1; i++) {
+            int j = 0;
+            while (j < N && haystack.charAt(i + j) == needle.charAt(j)) j++;
             
-            if (k == M) return i;
+            if (j == N) return i;
         }
         
         return -1;
