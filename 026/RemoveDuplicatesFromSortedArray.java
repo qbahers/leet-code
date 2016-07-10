@@ -1,9 +1,12 @@
+/**
+ * Time:  O(n)
+ * Space: O(1)
+ */
+
 public class RemoveDuplicatesFromSortedArray {
     
     public int removeDuplicates(int[] nums) {
         int N = nums.length;
-        
-        if (N == 0) return 0;
         
         int k = 0;
         for (int i = 1; i < N; i++) {
