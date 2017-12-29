@@ -8,8 +8,8 @@
  */
 
 /**
- * Time:  O(n)
- * Space: O(n)
+ * Time:  O(max(m, n))
+ * Space: O(max(m, n))
  */
 
 public class AddTwoNumbers {
